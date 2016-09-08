@@ -1,0 +1,75 @@
+<!DOCTYPE>
+<html ng-app="cadastrarControllerApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Cadastrar</title>
+
+<script type="text/javascript" src="../resources/js/angular.min.js"></script>
+<script type="text/javascript" src="../resources/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="../resources/js/livro/cadastrarLivroController.js"></script>
+
+<script type="text/javascript" src="../resources/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="../resources/js/materialize.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
+
+</head>
+
+<body>
+	<script>
+	      var app = angular.module('app', ['ngMessages']);
+	    </script>
+
+	<form id="formCadastrarLivro" ng-controller="cadastrarController" required>
+
+		<div class="container">
+
+			<h2>Cadastrar Livro</h2>
+			<br />
+
+			<div class="row">
+				<div class="col s10 input-field">
+					<label for="deTitulo">Título:</label>
+					<input type="text" id="deTitulo" name="deTitulo" ng-model="deTitulo" required />
+					<div ng-messages="formCadastrarLivro.deTitulo.$error">
+						<div ng-message="required">This field is required</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s2 input-field">
+					<label for="aaPublicacao">Ano Publicação:</label>
+					<input type="text" id="aaPublicacao" ng-model="aaPublicacao" />
+				</div>
+				<div class="col s6 input-field">
+					<label for="deAutor">Autor:</label>
+					<input type="text" id="deAutor" ng-model="deAutor" />
+				</div>
+				<div class="row">
+					<div class="col s2 input-field">
+						<label for="deEdicao">Edição:</label>
+						<input type="text" id="deEdicao" ng-model="deEdicao" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s3 input-field">
+					<label for="deEditora">Editora:</label>
+					<input type="text" id="deEditora" ng-model="deEditora" />
+				</div>
+
+				<div class="col s3 input-field">
+					<label for="icAtivo">Ativo:</label>
+					<input type="checkbox" id="icAtivo" ng-model="icAtivo" />
+				</div>
+			</div>
+
+			<a href="../" class="btn waves-effect waves-light ">Voltar</a>
+			<a class="waves-effect waves-light btn blue" ng-click="salvarLivro()"> Salvar</a>
+		</div>
+	</form>
+
+</body>
+</html>
