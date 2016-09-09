@@ -20,19 +20,19 @@ public class Livro implements Serializable {
 	@Column(name = "nu_livro")
 	private Integer nuLivro;
 
-	@Column(name = "de_titulo")
+	@Column(name = "de_titulo", length = 150, nullable = false)
 	private String deTitulo;
 
-	@Column(name = "aa_publicacao")
+	@Column(name = "aa_publicacao", length = 4, nullable = false)
 	private Integer aaPublicacao;
 
-	@Column(name = "de_autor")
+	@Column(name = "de_autor", length = 150, nullable = false)
 	private String deAutor;
 
-	@Column(name = "de_editora")
+	@Column(name = "de_editora", length = 50, nullable = false)
 	private String deEditora;
 
-	@Column(name = "de_edicao")
+	@Column(name = "de_edicao", length = 50, nullable = true)
 	private String deEdicao;
 
 	@Column(name = "ic_ativo", length = 1)

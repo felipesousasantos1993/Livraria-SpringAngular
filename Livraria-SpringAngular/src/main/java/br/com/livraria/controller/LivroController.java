@@ -83,21 +83,19 @@ public class LivroController {
 	/**
 	 * 
 	 * Salva um novo registro via ajax, esse m�todo vai ser chamado pelo
-	 * cadastrarController.js atrav�s do AngularJS
+	 * cadastrarController.js através do AngularJS
 	 * 
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public @ResponseBody ResultadoModel salvar(@RequestBody Livro livro) {
-
+	public ResultadoModel salvar(@RequestBody Livro livro) {
 		try {
-
 			livroRepository.salvar(livro);
 
 			resultadoModel.setCodigo(1);
 			resultadoModel.setMensagem("Livro Incluído com sucesso!");
 
 		} catch (Exception e) {
-
 			resultadoModel.setCodigo(2);
 			resultadoModel.setMensagem("Erro ao salvar o registro (" + e.getMessage() + ")");
 		}
@@ -110,8 +108,9 @@ public class LivroController {
 	 * 
 	 *
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/alterar", method = RequestMethod.POST)
-	public @ResponseBody ResultadoModel alterar(@RequestBody Livro livro) {
+	public ResultadoModel alterar(@RequestBody Livro livro) {
 
 		try {
 
@@ -133,8 +132,9 @@ public class LivroController {
 	 * Consulta todos os registros cadastrados(consultarRegistrosController.js)
 	 * 
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/consultarTodos", method = RequestMethod.GET)
-	public @ResponseBody List<Livro> consultarTodos() {
+	public List<Livro> consultarTodos() {
 
 		return livroRepository.todosLivros();
 
@@ -144,8 +144,9 @@ public class LivroController {
 	 * Excluir um usu�rio pelo c�digo (consultarRegistrosController.js)
 	 * 
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/excluirRegistro/{codigo}", method = RequestMethod.DELETE)
-	public @ResponseBody void excluirRegistro(@PathVariable int codigo) {
+	public void excluirRegistro(@PathVariable int codigo) {
 
 		livroRepository.excluir(codigo);
 

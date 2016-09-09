@@ -9,10 +9,22 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 	$scope.deAutor = null;
 	$scope.deEditora = null;
 	$scope.deEdicao = null;
+	
+	$scope.updateForm = function() {
+		$scope.submited = false;
+	};
 
 	$scope.salvarLivro = function() {
 
-		/* DEFINI O OBJETO QUE VAI SER ENVIADO VIA AJAX PELO ANGULARJS */
+		$scope.submited = true;
+
+		if (!$scope.form.$valid) {
+			return false;
+		}
+
+		/*
+		 * DEFINI O OBJETO QUE VAI SER ENVIADO VIA AJAX PELO ANGULARJS
+		 */
 		var livro = new Object();
 		livro.deTitulo = $scope.deTitulo,
 				livro.aaPublicacao = $scope.aaPublicacao,
@@ -31,7 +43,9 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 				/* MENSAGEM DE SUCESSO */
 				$window.alert(data.mensagem);
 
-				/* LIMPA OS CAMPOS APÓS SALVAR O REGISTRO COM SUCESSO */
+				/*
+				 * LIMPA OS CAMPOS APÓS SALVAR O REGISTRO COM SUCESSO
+				 */
 				$scope.deTitulo = null;
 				$scope.aaPublicacao = null;
 				$scope.deAutor = null;
@@ -39,14 +53,18 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 				$scope.deEdicao = null;
 			} else {
 
-				/* MOSTRA O ERRO TRATO PELO SPRING (OBJETO ResultadoModel) */
+				/*
+				 * MOSTRA O ERRO TRATO PELO SPRING (OBJETO ResultadoModel)
+				 */
 				$window.alert(data.mensagem);
 
 			}
 		});
 
 		response.error(function(data, status, headers, config) {
-			/* SE OCORRER ERRO NÃO TRATADO IREMOS MOSTRA EM MENSAGEM */
+			/*
+			 * SE OCORRER ERRO NÃO TRATADO IREMOS MOSTRA EM MENSAGEM
+			 */
 			$window.alert(data);
 
 		});

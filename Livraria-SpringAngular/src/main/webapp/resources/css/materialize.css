@@ -5860,6 +5860,68 @@ textarea.materialize-textarea:focus.invalid + label:after {
   opacity: 1;
 }
 
+input:not([type]).ng-invalid + label:after,
+input:not([type]):focus.ng-invalid + label:after,
+input[type=text].ng-invalid + label:after,
+input[type=text]:focus.ng-invalid + label:after,
+input[type=password].ng-invalid + label:after,
+input[type=password]:focus.ng-invalid + label:after,
+input[type=email].ng-invalid + label:after,
+input[type=email]:focus.ng-invalid + label:after,
+input[type=url].ng-invalid + label:after,
+input[type=url]:focus.ng-invalid + label:after,
+input[type=time].ng-invalid + label:after,
+input[type=time]:focus.ng-invalid + label:after,
+input[type=date].ng-invalid + label:after,
+input[type=date]:focus.ng-invalid + label:after,
+input[type=datetime].ng-invalid + label:after,
+input[type=datetime]:focus.ng-invalid + label:after,
+input[type=datetime-local].ng-invalid + label:after,
+input[type=datetime-local]:focus.ng-invalid + label:after,
+input[type=tel].ng-invalid + label:after,
+input[type=tel]:focus.ng-invalid + label:after,
+input[type=number].ng-invalid + label:after,
+input[type=number]:focus.ng-invalid + label:after,
+input[type=search].ng-invalid + label:after,
+input[type=search]:focus.ng-invalid + label:after,
+textarea.materialize-textarea.ng-invalid + label:after,
+textarea.materialize-textarea:focus.ng-invalid + label:after {
+  content: attr(data-error);
+  color: #F44336;
+  opacity: 1;
+}
+
+input:not([type]).ng-invalid + span,
+input:not([type]):focus.ng-invalid + span,
+input[type=text].ng-invalid + span,
+input[type=text]:focus.ng-invalid + span,
+input[type=password].ng-invalid + span,
+input[type=password]:focus.ng-invalid + span,
+input[type=email].ng-invalid + span,
+input[type=email]:focus.ng-invalid + span,
+input[type=url].ng-invalid + span,
+input[type=url]:focus.ng-invalid + span,
+input[type=time].ng-invalid + span,
+input[type=time]:focus.ng-invalid + span,
+input[type=date].ng-invalid + span,
+input[type=date]:focus.ng-invalid + span,
+input[type=datetime].ng-invalid + span,
+input[type=datetime]:focus.ng-invalid + span,
+input[type=datetime-local].ng-invalid + span,
+input[type=datetime-local]:focus.ng-invalid + span,
+input[type=tel].ng-invalid + span,
+input[type=tel]:focus.ng-invalid + span,
+input[type=number].ng-invalid + span,
+input[type=number]:focus.ng-invalid + span,
+input[type=search].ng-invalid + span,
+input[type=search]:focus.ng-invalid + span,
+textarea.materialize-textarea.ng-invalid + span,
+textarea.materialize-textarea:focus.ng-invalid + span {
+  content: attr(data-error);
+  color: #F44336 !important;
+  opacity: 1;
+}
+
 input:not([type]).validate + label,
 input[type=text].validate + label,
 input[type=password].validate + label,
@@ -5893,8 +5955,31 @@ textarea.materialize-textarea + label:after {
   display: block;
   content: "";
   position: absolute;
-  top: 60px;
+  top: 40px;
   opacity: 0;
+  font-size:11px;
+  transition: .2s opacity ease-out, .2s color ease-out;
+}
+
+input:not([type]) + span,
+input[type=text] + span,
+input[type=password] + span,
+input[type=email] + span,
+input[type=url] + span,
+input[type=time] + span,
+input[type=date] + span,
+input[type=datetime] + span,
+input[type=datetime-local] + span,
+input[type=tel] + span,
+input[type=number] + span,
+input[type=search] + span,
+textarea.materialize-textarea + span {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50px;
+  opacity: 0;
+  font-size:11px;
   transition: .2s opacity ease-out, .2s color ease-out;
 }
 
@@ -6078,7 +6163,7 @@ textarea.materialize-textarea {
   position: absolute;
   left: 0;
   top: 0;
-  margin: 4px;
+  margin: 4px; 
   width: 16px;
   height: 16px;
   z-index: 0;

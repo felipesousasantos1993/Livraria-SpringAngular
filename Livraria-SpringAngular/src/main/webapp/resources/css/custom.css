@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+.error-msg {
+	color: #F44336;
+	opacity: 1;
+	display: block;
+	content: "";
+	position: absolute;
+	top: 50px;
+	opacity: 1;
+	font-size: 11px;
+	transition: .2s opacity ease-out, .2s color ease-out;
+}
