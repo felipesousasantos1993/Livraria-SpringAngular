@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html lang="pt-BR" ng-app="consultarRegistrosControllerApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Language" content="pt-BR">
+<title>Consultar Livros</title>
+
+
+<script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/materialize.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.mask.js"></script>
+
+<script type="text/javascript" src="../resources/js/angular.min.js"></script>
+<script type="text/javascript" src="../resources/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="../resources/js/livro/consultarLivroController.js"></script>
+<script>
+	      var app = angular.module('consultarLivrosController', ['ngMessages']);
+	    </script>
+
+
+<link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
+
+</head>
+<body>
+	<form id="form" name="form">
+		<div class="container">
+			<div class="row">
+
+				<table ng-controller="consultarLivrosController" data-ng-init="init()" class="bordered responsive-table highlight">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Autor</th>
+							<th>Ano Publicação</th>
+							<th>Edição</th>
+							<th>Editora</th>
+							<th>Ativo</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="livro in livros">
+
+							<td>{{ livro.deTitulo }}</td>
+							<td>{{ livro.deAutor }}</td>
+							<td>{{ livro.aaPublicacao }}</td>
+							<td>{{ livro.deEdicao }}</td>
+							<td>{{ livro.deEditora }}</td>
+							<td>{{ livro.ativo ? "Sim" : "Não" }}</td>
+							<td><a ng-href="editar.html/{{livro.nuLivro}}" class="waves-effect waves-light btn green">Editar</a> <a href="#"
+									ng-click="excluirRegistro(livro.nuLivro)" class="waves-effect waves-light btn red">Excluir</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="row">
+
+				<a href="../" class="waves-effect waves-light btn">Voltar</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="../resources/js/custom.js"></script>
+	</form>
+</body>
+</html>

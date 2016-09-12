@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html lang="pt-BR" ng-app="editarLivroControllerApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Editar Livro</title>
+
+
+<script type="text/javascript" src="../../resources/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../resources/js/materialize.js"></script>
+<script type="text/javascript" src="../../resources/js/jquery.mask.js"></script>
+
+<script type="text/javascript" src="../../resources/js/angular.min.js"></script>
+<script type="text/javascript" src="../../resources/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="../../resources/js/livro/editarLivroController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../resources/css/materialize.css" />
+<link rel="stylesheet" type="text/css" href="../../resources/css/custom.css" />
+
+</head>
+<body>
+	<form ng-controller="editarLivroController">
+		<div class="container">
+
+			<h3>Editar Livro</h3>
+			<div class="row">
+				<div class="col s12 input-field">
+					<label for="input-deTitulo">Título</label>
+					<input id="input-deTitulo" type="text" name="deTitulo" ng-model="deTitulo" ng-init="deTitulo = $livro" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s7 input-field">
+					<label for="input-deAutor">Autor:</label>
+					<input ng-model="deAutor" type="text" id="input-deAutor" ng-init="deAutor='${livro.deAutor}'" />
+				</div>
+				<div class="col s2 input-field">
+					<label for="input-aaPublicacao">Ano Publicação</label>
+					<input id="input-aaPublicacao" type="text" ng-model="aaPublicacao" ng-init="aaPublicacao='${livro.aaPublicacao}'" />
+				</div>
+				<div class="col s3 input-field">
+					<label for="input-deEdicao">Edição:</label>
+					<input id="input-deEdicao" type="text" ng-model="deEdicao" ng-init="deEdicao='${livro.deEdicao}'" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s7 input-field">
+					<label for="input-deEditora">Editora:</label>
+					<input id="input-deEditora" type="text" ng-model="deEditora" ng-init="deEditora='${livro.deEditora}'" />
+				</div>
+				<div class="col s5 input-field">
+					<label for="input-icAtivo">Ativo:</label>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<a href="../consultar.html" class="btn waves-effect ">Voltar</a>
+				<a class="btn waves-effect waves-light blue" ng-click="alterarLivro()">Salvar</a>
+
+				<script type="text/javascript" src="../../resources/js/custom.js"></script>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

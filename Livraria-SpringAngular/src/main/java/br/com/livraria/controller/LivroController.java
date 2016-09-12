@@ -62,22 +62,20 @@ public class LivroController {
 	 * cadastrados
 	 * 
 	 */
-	@RequestMapping(value = "/consultarRegistros.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/consultar.html", method = RequestMethod.GET)
 	public ModelAndView consultar() {
 
-		return new ModelAndView("consultarRegistros");
+		return new ModelAndView("livro/consultarLivro");
 	}
 
 	/**
 	 * Chama a view (editarRegistro.jsp) para editar um registro cadastrado
 	 * 
 	 */
-	@RequestMapping(value = "/editarRegistro.html/{codigo}", method = RequestMethod.GET)
+	@RequestMapping(value = "/editar.html/{codigo}", method = RequestMethod.GET)
 	public ModelAndView editarRegistro(@PathVariable int codigo) {
 
-		Livro livro = livroRepository.consultarPorCodigo(codigo);
-
-		return new ModelAndView("editarLivro", "livro", livro);
+		return new ModelAndView("livro/editarLivro", "livro", livroRepository.consultarPorCodigo(codigo));
 	}
 
 	/**
@@ -93,7 +91,7 @@ public class LivroController {
 			livroRepository.salvar(livro);
 
 			resultadoModel.setCodigo(1);
-			resultadoModel.setMensagem("Livro IncluÃ­do com sucesso!");
+			resultadoModel.setMensagem("Livro Incluído com sucesso!");
 
 		} catch (Exception e) {
 			resultadoModel.setCodigo(2);

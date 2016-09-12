@@ -51,6 +51,8 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 				$scope.deAutor = null;
 				$scope.deEditora = null;
 				$scope.deEdicao = null;
+				
+				$scope.submited = false;
 			} else {
 
 				/*

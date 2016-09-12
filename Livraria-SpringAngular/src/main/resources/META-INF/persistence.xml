@@ -15,6 +15,7 @@
 
 		<class>br.com.livraria.model.Livro</class>
 
+
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

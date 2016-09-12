@@ -12,8 +12,8 @@ import br.com.livraria.model.Livro;
 /**
  * @author: cicero.ednilson
  * 
- *          CLASSE QUE VAI REALIZAR A PERSIST�NCIA DO NOSSO OBJETO Livro
- *          NO BANCO DE DADOS.
+ *          CLASSE QUE VAI REALIZAR A PERSIST�NCIA DO NOSSO OBJETO Livro NO
+ *          BANCO DE DADOS.
  * 
  * 
  */
@@ -96,7 +96,7 @@ public class LivroRepository {
 	 */
 	public List<Livro> todosLivros() {
 
-		return manager.createQuery("SELECT l FROM Livro l ORDER BY c.deTitulo ", Livro.class).getResultList();
+		return manager.createQuery("SELECT l FROM Livro l ORDER BY l.deTitulo ", Livro.class).getResultList();
 	}
 
 }
