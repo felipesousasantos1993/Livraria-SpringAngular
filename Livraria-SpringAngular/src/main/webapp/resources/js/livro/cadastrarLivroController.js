@@ -9,10 +9,13 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 	$scope.deAutor = null;
 	$scope.deEditora = null;
 	$scope.deEdicao = null;
+	$scope.ativo = null;
 	
 	$scope.updateForm = function() {
 		$scope.submited = false;
 	};
+	
+
 
 	$scope.salvarLivro = function() {
 
@@ -25,12 +28,13 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 		/*
 		 * DEFINI O OBJETO QUE VAI SER ENVIADO VIA AJAX PELO ANGULARJS
 		 */
+		
 		var livro = new Object();
 		livro.deTitulo = $scope.deTitulo,
 				livro.aaPublicacao = $scope.aaPublicacao,
 				livro.deAutor = $scope.deAutor,
 				livro.deEditora = $scope.deEditora,
-				livro.deEdicao = $scope.deEdicao, livro.ativo = $scope.ativo;
+				livro.deEdicao = $scope.deEdicao, livro.ativo = null == $scope.ativo ? false : $scope.ativo;
 
 		/* EXECUTA O POST PARA SALVAR O REGISTRO */
 		var response = $http.post("salvar", livro);

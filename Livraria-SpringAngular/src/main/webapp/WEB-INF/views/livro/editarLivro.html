@@ -15,41 +15,71 @@
 
 <link rel="stylesheet" type="text/css" href="../../resources/css/materialize.css" />
 <link rel="stylesheet" type="text/css" href="../../resources/css/custom.css" />
-
+<link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-	<form ng-controller="editarLivroController">
+	<main>
+	<form id="form" name="form" ng-controller="editarLivroController" ng-init="init()">
 		<div class="container">
 
-			<h3>Editar Livro</h3>
+			<h4>Editar Livro</h4>
 			<div class="row">
 				<div class="col s12 input-field">
 					<label for="input-deTitulo">Título</label>
-					<input id="input-deTitulo" type="text" name="deTitulo" ng-model="deTitulo" ng-init="deTitulo = $livro" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col s7 input-field">
-					<label for="input-deAutor">Autor:</label>
-					<input ng-model="deAutor" type="text" id="input-deAutor" ng-init="deAutor='${livro.deAutor}'" />
-				</div>
-				<div class="col s2 input-field">
-					<label for="input-aaPublicacao">Ano Publicação</label>
-					<input id="input-aaPublicacao" type="text" ng-model="aaPublicacao" ng-init="aaPublicacao='${livro.aaPublicacao}'" />
-				</div>
-				<div class="col s3 input-field">
-					<label for="input-deEdicao">Edição:</label>
-					<input id="input-deEdicao" type="text" ng-model="deEdicao" ng-init="deEdicao='${livro.deEdicao}'" />
+					<input id="input-deTitulo" type="text" name="deTitulo" ng-model="deTitulo" ng-init="deTitulo = '${livro.deTitulo}'" class="validate"
+						ng-focus="updateForm()" ng-minlength="5" ng-maxlength="150" required />
+					<div ng-messages="form.deTitulo.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.deTitulo.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.deTitulo.$error.minlength">Tamanho minímo é de 5 caracteres</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.deTitulo.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
+					</div>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col s7 input-field">
-					<label for="input-deEditora">Editora:</label>
-					<input id="input-deEditora" type="text" ng-model="deEditora" ng-init="deEditora='${livro.deEditora}'" />
+					<label for="input-deAutor">Autor:</label>
+					<input ng-model="deAutor" type="text" name="deAutor" id="input-deAutor" ng-init="deAutor = '${livro.deAutor}' " ng-minlength="5"
+						ng-maxlength="150" required ng-focus="updateForm()" />
+					<div ng-messages="form.deAutor.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.deAutor.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.deAutor.$error.minlength">Tamanho minímo é de 5 caracteres</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.deAutor.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
+					</div>
+				</div>
+				<div class="col s2 input-field">
+					<label for="input-aaPublicacao">Ano Publicação</label>
+					<input id="input-aaPublicacao" type="text" ng-model="aaPublicacao" name="aaPublicacao" ng-init="aaPublicacao = '${livro.aaPublicacao}' "
+						class="validate ano" ng-minlength="4" required ng-focus="updateForm()" />
+					<div ng-messages="form.aaPublicacao.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.aaPublicacao.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.aaPublicacao.$error.minlength">Tamanho minímo é de 4 caracteres</div>
+					</div>
+				</div>
+				<div class="col s3 input-field">
+					<label for="input-deEdicao">Edição</label>
+					<input id="input-deEdicao" type="text" ng-model="deEdicao" ng-init="deEdicao = '${livro.deEdicao}' " ng-maxlength="50" />
+					<div ng-messages="form.deEdicao.$error" style="color: maroon" role="alert" ng-minlength="5" ng-maxlength="50">
+						<div ng-message="maxlength" class="error-msg" ng-show="form.deEdicao.$error.maxlength">Tamanho máximo é de 50 caracteres</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s7 input-field">
+					<label for="input-deEditora">Editora</label>
+					<input id="input-deEditora" type="text" ng-model="deEditora" ng-init="deEditora = '${livro.deEditora}'" class="validate" ng-minlength="5"
+						ng-maxlength="50" required ng-focus="updateForm()" />
+					<div ng-messages="form.deEditora.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.deEditora.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.deEditora.$error.minlength">Tamanho minímo é de 5 caracteres</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.deEditora.$error.maxlength">Tamanho máximo é de 50 caracteres</div>
+					</div>
 				</div>
 				<div class="col s5 input-field">
-					<label for="input-icAtivo">Ativo:</label>
+					<input type="checkbox" id="input-icAtivo" ng-model="icAtivo" ng-init="icAtivo = '${livro.ativo}'" />
+					<label for="input-icAtivo">Ativo</label>
 
 				</div>
 			</div>
@@ -61,6 +91,17 @@
 				<script type="text/javascript" src="../../resources/js/custom.js"></script>
 			</div>
 		</div>
+
 	</form>
+	</main>
+
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">GitHub</a>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

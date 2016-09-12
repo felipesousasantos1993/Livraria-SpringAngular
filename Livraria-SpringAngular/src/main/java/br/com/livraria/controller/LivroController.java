@@ -74,8 +74,14 @@ public class LivroController {
 	 */
 	@RequestMapping(value = "/editar.html/{codigo}", method = RequestMethod.GET)
 	public ModelAndView editarRegistro(@PathVariable int codigo) {
+		return new ModelAndView("livro/editarLivro");
+	}
 
-		return new ModelAndView("livro/editarLivro", "livro", livroRepository.consultarPorCodigo(codigo));
+	@RequestMapping(value = "/editarLivro.html/{codigo}", method = RequestMethod.GET)
+	@ResponseBody
+	public Livro getLivroJson(@PathVariable int codigo) {
+		return livroRepository.consultarPorCodigo(codigo);
+
 	}
 
 	/**
@@ -91,7 +97,7 @@ public class LivroController {
 			livroRepository.salvar(livro);
 
 			resultadoModel.setCodigo(1);
-			resultadoModel.setMensagem("Livro Incluído com sucesso!");
+			resultadoModel.setMensagem("Livro IncluÃ­do com sucesso!");
 
 		} catch (Exception e) {
 			resultadoModel.setCodigo(2);
@@ -135,7 +141,13 @@ public class LivroController {
 	public List<Livro> consultarTodos() {
 
 		return livroRepository.todosLivros();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/consultar.html/{filtro}", method = RequestMethod.GET)
+	public List<Livro> consultarPorFiltro(@PathVariable String filtro) {
 
+		return livroRepository.pesquisarFiltro(filtro);
 	}
 
 	/**

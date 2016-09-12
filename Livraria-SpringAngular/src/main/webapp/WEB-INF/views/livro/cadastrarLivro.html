@@ -15,22 +15,22 @@
 
 <link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
-
+<link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-
+	<main>
 	<form id="form" name="form" ng-controller="cadastrarController" required>
-
 		<div class="container">
 
-			<h3>Novo Livro</h3>
+			<h4>Novo Livro</h4>
 
 			<div class="row">
 				<div class="col s12 input-field">
 					<label for="deTitulo">Título</label>
-					<input type="text" id="deTitulo" name="deTitulo" ng-model="deTitulo" class="validate" ng-focus="updateForm()" ng-minlength="5" ng-maxlength="150"
-						required />
+					<input type="text" id="deTitulo" name="deTitulo" ng-model="deTitulo" class="validate" ng-focus="updateForm()" ng-minlength="5"
+						ng-maxlength="150" required />
 					<div ng-messages="form.deTitulo.$error" style="color: maroon" role="alert">
 						<div ng-message="required" class="error-msg" ng-show="form.deTitulo.$error.required && submited">Campo obrigatório</div>
 						<div ng-message="minlength" class="error-msg" ng-show="form.deTitulo.$error.minlength">Tamanho minímo é de 5 caracteres</div>
@@ -61,11 +61,10 @@
 				<div class="row">
 					<div class="col s3 input-field">
 						<label for="deEdicao">Edição</label>
-						<input type="text" id="deEdicao" name="deEdicao" ng-model="deEdicao" />
-					</div>
-					<div ng-messages="form.deEdicao.$error" style="color: maroon" role="alert" ng-minlength="5" ng-maxlength="50">
-						<div ng-message="minlength" class="error-msg" ng-show="form.deEdicao.$error.minlength">Tamanho minímo é de 5 caracteres</div>
-						<div ng-message="maxlength" class="error-msg" ng-show="form.deEdicao.$error.maxlength">Tamanho máximo é de 50 caracteres</div>
+						<input type="text" id="deEdicao" name="deEdicao" ng-model="deEdicao" ng-maxlength="50" />
+						<div ng-messages="form.deEdicao.$error" style="color: maroon" role="alert">
+							<div ng-message="maxlength" class="error-msg" ng-show="form.deEdicao.$error.maxlength">Tamanho máximo é de 50 caracteres</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -94,6 +93,16 @@
 		</div>
 		<script type="text/javascript" src="../resources/js/custom.js"></script>
 	</form>
+	</main>
+
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">GitHub</a>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>

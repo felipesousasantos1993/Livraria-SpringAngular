@@ -4,12 +4,20 @@ consultarRegistrosControllerApp.controller("consultarLivrosController",function(
 	
 	/* CRIANDO UM ARRAY PARA OS REGISTROS QUE VÃO SER RETORNADOS PELO SPRING */
 	 $scope.livros = new Array();
+	 $scope.nuLivro = null;
 	 
+	 $scope.reverse = false;
+	 $scope.sort = '';
+	 
+	 $scope.sortBy = function(sort){
+		 $scope.sort = sort;
+		 $scope.reverse = $scope.reverse ? false : true; 
+	 };
 	 
 	 $scope.init = function(){
 	
 		 /*
-			 * CHAMA O MÉTODO consultarTodos DO CONTROLLER GERENCIADO PELO
+			 * CHAMA O METODO consultarTodos DO CONTROLLER GERENCIADO PELO
 			 * SPRING
 			 */
 		 var response = $http.get("consultarTodos");
@@ -33,13 +41,16 @@ consultarRegistrosControllerApp.controller("consultarLivrosController",function(
 		 });
 	 }
 	 
+	 $scope.selecionarLivro = function(livro) {
+		$scope.nuLivro =  livro.nuLivro;
+		$scope.deTituloSelecionado =  livro.deTitulo;
+	 };
+	 
 	 /* FUNÇÃO PARA EXCLUIR UM REGISTRO */	 
-	 $scope.excluirRegistro = function(codigo){
+	 $scope.excluirLivro = function(){
 		 
-		 if($window.confirm("Deseja realmente excluir esse registro?")){
-
 			 /* CHAMA O MÉTODO DO SPRING PARA EXCLUIR UM REGISTRO */
-			 var response = $http.delete("excluirRegistro/" + codigo);
+			 var response = $http.delete("excluirRegistro/" + $scope.nuLivro);
 			 
 			 response.success(function(data, status, headers, config) {
 			
@@ -51,12 +62,8 @@ consultarRegistrosControllerApp.controller("consultarLivrosController",function(
 			 response.error(function(data, status, headers, config) {
 				 /* SE OCORRER ERRO NÃO TRATADO IREMOS MOSTRA EM MENSAGEM */
 				 $window.alert(data);
-				
+				 
 			 });
-			 
-		 }
-		 
-		 
 	 }
 	 
 });

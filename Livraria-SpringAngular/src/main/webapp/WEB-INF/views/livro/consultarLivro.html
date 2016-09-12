@@ -13,43 +13,52 @@
 <script type="text/javascript" src="../resources/js/angular.min.js"></script>
 <script type="text/javascript" src="../resources/js/angular-messages.min.js"></script>
 <script type="text/javascript" src="../resources/js/livro/consultarLivroController.js"></script>
-<script>
-	      var app = angular.module('consultarLivrosController', ['ngMessages']);
-	    </script>
-
 
 <link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
 
+<link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+
 </head>
 <body>
-	<form id="form" name="form">
+	<main>
+	<form id="form" name="form" ng-controller="consultarLivrosController">
 		<div class="container">
 			<div class="row">
 
-				<table ng-controller="consultarLivrosController" data-ng-init="init()" class="bordered responsive-table highlight">
+				<div class="center-align" ng-show="!(livros | filter:criteria).length">
+					<p>
+						Nenhum livro em encontrado
+						<a href="cadastrar.html">clique aqui</a>
+						para cadastrar
+					</p>
+				</div>
+
+				<table data-ng-init="init()" ng-show="(livros | filter:criteria).length" class="bordered responsive-table highlight">
 					<thead>
 						<tr>
-							<th>Título</th>
-							<th>Autor</th>
-							<th>Ano Publicação</th>
-							<th>Edição</th>
-							<th>Editora</th>
-							<th>Ativo</th>
+							<th><a href="#" ng-click="sortBy('deTitulo')"> Título</a></th>
+							<th><a href="#" ng-click="sortBy('deAutor')">Autor</a></th>
+							<th><a href="#" ng-click="sortBy('aaPublicacao')">Ano Publicação</a></th>
+							<th><a href="#" ng-click="sortBy('deEdicao')">Edição</a></th>
+							<th><a href="#" ng-click="sortBy('deEditora')">Editora</a></th>
+							<th><a href="#" ng-click="sortBy('ativo')">Ativo</a></th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="livro in livros">
-
+						<tr ng-repeat="livro in livros | orderBy :sort:reverse">
 							<td>{{ livro.deTitulo }}</td>
 							<td>{{ livro.deAutor }}</td>
 							<td>{{ livro.aaPublicacao }}</td>
 							<td>{{ livro.deEdicao }}</td>
 							<td>{{ livro.deEditora }}</td>
 							<td>{{ livro.ativo ? "Sim" : "Não" }}</td>
-							<td><a ng-href="editar.html/{{livro.nuLivro}}" class="waves-effect waves-light btn green">Editar</a> <a href="#"
-									ng-click="excluirRegistro(livro.nuLivro)" class="waves-effect waves-light btn red">Excluir</a></td>
+							<td>
+								<a ng-href="editar.html/{{livro.nuLivro}}" class="waves-effect waves-light btn green">Editar</a>
+								<a ng-click="selecionarLivro(livro)" onclick="showModal('modalExcluir')" class="waves-effect waves-light btn red">Excluir</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -59,8 +68,32 @@
 
 				<a href="../" class="waves-effect waves-light btn">Voltar</a>
 			</div>
+
 		</div>
 		<script type="text/javascript" src="../resources/js/custom.js"></script>
+
+		<div id="modalExcluir" class="modal">
+			<div class="modal-content">
+				<h5>Confirmação</h5>
+				<p>
+					Deseja realmente excluir o livro <strong>{{deTituloSelecionado}}</strong>?
+				</p>
+			</div>
+			<div class="modal-footer">
+				<a class=" modal-action modal-close waves-effect waves-green btn-flat ">Não</a>
+				<a ng-click="excluirLivro() " class=" modal-action modal-close waves-effect waves-green btn-flat ">Sim</a>
+			</div>
+		</div>
 	</form>
+	</main>
+
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">GitHub</a>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

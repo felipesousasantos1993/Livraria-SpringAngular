@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.livraria.model.Livro;
@@ -71,6 +73,23 @@ public class LivroRepository {
 	public Livro consultarPorCodigo(int codigo) {
 
 		return manager.find(Livro.class, codigo);
+	}
+
+	public List<Livro> pesquisarFiltro(String filtro) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" SELECT l from Livro l ");
+		if (null != filtro && !"".equals(filtro)) {
+			sql.append(" WHERE trim(upper(l.deTitulo)) LIKE  :filtro ");
+			sql.append(" AND trim(upper(l.deAutor)) LIKE  :filtro ");
+			sql.append(" AND trim(upper(cast(l.aaPublicacao as string))) LIKE  :filtro ");
+			sql.append(" AND trim(upper(l.deEdicao)) LIKE  :filtro ");
+			sql.append(" AND trim(upper(l.deEditora)) LIKE  :filtro ");
+		}
+		Query query = manager.createQuery(sql.toString());
+		if (null != filtro && !"".equals(filtro)) {
+			query.setParameter("filtro", "%" + filtro.toUpperCase() + "%");
+		}
+		return query.getResultList();
 	}
 
 	/**

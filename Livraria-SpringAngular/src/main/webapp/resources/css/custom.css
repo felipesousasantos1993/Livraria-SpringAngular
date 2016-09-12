@@ -11,3 +11,13 @@
 	font-size: 11px;
 	transition: .2s opacity ease-out, .2s color ease-out;
 }
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}

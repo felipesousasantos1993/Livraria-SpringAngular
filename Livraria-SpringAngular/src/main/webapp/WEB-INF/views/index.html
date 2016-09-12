@@ -1,14 +1,43 @@
-<html>
+<html lang="pt-BR" ng-app="indexControllerApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="./resources/js/angular.min.js"></script>
+<script type="text/javascript" src="./resources/js/index/indexController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="./resources/css/materialize.css" />
+<link rel="stylesheet" type="text/css" href="./resources/css/custom.css" />
+<link rel="shortcut icon" href="./resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="./resources/img/favicon.ico" type="image/x-icon" />
+
+<title>Livraria-SpringAngular</title>
+</head>
 <body>
-	<h1>Livraria-SpringAngular</h1>
-	<br />
-	<br />
-	<h2>Spring MVC e AngularJS</h2>
+	<main>
+	<form ng-controller="indexController">
+		<div class="container">
+			<div class="row center-align">
+				<h3>Livraria-SpringAngular</h3>
+			</div>
+			<div class="row center-align">
+				<h4>Spring MVC e AngularJS</h4>
+			</div>
 
-	<ul style="list-style-type: square">
-		<li><a href="livro/cadastrar.html">Cadastrar</a></li>
-		<li><a href="livro/consultar.html">Consultar</a></li>
-	</ul>
+			<div class="row center-align">
+				<a href="livro/cadastrar.html" class="btn waves-light waves-effect green lighten-1">Novo Livro</a>
+				<a href="livro/consultar.html" class="btn waves-light waves-effect cyan darken-4">Pesquisar Todos</a>
+			</div>
 
+		</div>
+	</form>
+	</main>
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">GitHub</a>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>
