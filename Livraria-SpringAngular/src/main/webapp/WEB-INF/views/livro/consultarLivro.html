@@ -16,6 +16,7 @@
 
 <link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
 <link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
@@ -44,9 +45,9 @@
 							<th><a href="#" ng-click="sortBy('deEdicao')">Edição</a></th>
 							<th><a href="#" ng-click="sortBy('deEditora')">Editora</a></th>
 							<th><a href="#" ng-click="sortBy('ativo')">Ativo</a></th>
-							<th></th>
+							<th>Ação</th> 
 						</tr>
-					</thead>
+					</thead> 
 					<tbody>
 						<tr ng-repeat="livro in livros | orderBy :sort:reverse">
 							<td>{{ livro.deTitulo }}</td>
@@ -56,8 +57,12 @@
 							<td>{{ livro.deEditora }}</td>
 							<td>{{ livro.ativo ? "Sim" : "Não" }}</td>
 							<td>
-								<a ng-href="editar.html/{{livro.nuLivro}}" class="waves-effect waves-light btn green">Editar</a>
-								<a ng-click="selecionarLivro(livro)" onclick="showModal('modalExcluir')" class="waves-effect waves-light btn red">Excluir</a>
+								<a ng-href="editar.html/{{livro.nuLivro}}" class="waves-effect waves-light btn green">
+									<i class="material-icons left ">mode_edit</i>
+								</a>
+								<a ng-click="selecionarLivro(livro)" onclick="showModal('modalExcluir')" class="waves-effect waves-light btn red">
+									<i class="material-icons left ">delete</i>
+								</a>
 							</td>
 						</tr>
 					</tbody>

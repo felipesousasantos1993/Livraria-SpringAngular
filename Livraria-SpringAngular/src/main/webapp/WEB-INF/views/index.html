@@ -1,6 +1,10 @@
+<!DOCTYPE>
 <html lang="pt-BR" ng-app="indexControllerApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script type="text/javascript" src="./resources/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="./resources/js/materialize.js"></script>
 
 <script type="text/javascript" src="./resources/js/angular.min.js"></script>
 <script type="text/javascript" src="./resources/js/index/indexController.js"></script>
@@ -9,10 +13,27 @@
 <link rel="stylesheet" type="text/css" href="./resources/css/custom.css" />
 <link rel="shortcut icon" href="./resources/img/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="./resources/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
 <title>Livraria-SpringAngular</title>
 </head>
 <body>
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="livro/cadastrar.html">Cadastrar</a></li>
+		<li><a href="livro/consultar.html"> Pesquisar </a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">Livraria-SpringAngular</a>
+			<ul class="hide-on-med-and-down" style="display: inline;">
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+						Livro<i class="material-icons right">arrow_drop_down</i>
+					</a></li>
+			</ul>
+
+		</div>
+	</nav>
+
 	<main>
 	<form ng-controller="indexController">
 		<div class="container">
@@ -21,11 +42,6 @@
 			</div>
 			<div class="row center-align">
 				<h4>Spring MVC e AngularJS</h4>
-			</div>
-
-			<div class="row center-align">
-				<a href="livro/cadastrar.html" class="btn waves-light waves-effect green lighten-1">Novo Livro</a>
-				<a href="livro/consultar.html" class="btn waves-light waves-effect cyan darken-4">Pesquisar Todos</a>
 			</div>
 
 		</div>
@@ -39,5 +55,6 @@
 			</div>
 		</div>
 	</footer>
+	<script type="text/javascript" src="./resources/js/custom.js"></script>
 </body>
 </html>

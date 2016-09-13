@@ -56,7 +56,7 @@ consultarRegistrosControllerApp.controller("consultarLivrosController",function(
 			
 				 /* RECARREGANDO OS REGISTROS CADASTRADOS */
 				 $scope.init();
-				 
+				 Materialize.toast('Livro exclu&iacutedo com sucesso!', 4000)
 			 });
 			 
 			 response.error(function(data, status, headers, config) {

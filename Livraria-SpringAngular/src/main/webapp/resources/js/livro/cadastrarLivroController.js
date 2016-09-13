@@ -10,12 +10,10 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 	$scope.deEditora = null;
 	$scope.deEdicao = null;
 	$scope.ativo = null;
-	
+
 	$scope.updateForm = function() {
 		$scope.submited = false;
 	};
-	
-
 
 	$scope.salvarLivro = function() {
 
@@ -28,13 +26,14 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 		/*
 		 * DEFINI O OBJETO QUE VAI SER ENVIADO VIA AJAX PELO ANGULARJS
 		 */
-		
+
 		var livro = new Object();
 		livro.deTitulo = $scope.deTitulo,
 				livro.aaPublicacao = $scope.aaPublicacao,
 				livro.deAutor = $scope.deAutor,
 				livro.deEditora = $scope.deEditora,
-				livro.deEdicao = $scope.deEdicao, livro.ativo = null == $scope.ativo ? false : $scope.ativo;
+				livro.deEdicao = $scope.deEdicao,
+				livro.ativo = null == $scope.icAtivo ? false : $scope.icAtivo;
 
 		/* EXECUTA O POST PARA SALVAR O REGISTRO */
 		var response = $http.post("salvar", livro);
@@ -45,7 +44,7 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 			if (data.codigo == 1) {
 
 				/* MENSAGEM DE SUCESSO */
-				$window.alert(data.mensagem);
+				Materialize.toast(data.mensagem, 4000)
 
 				/*
 				 * LIMPA OS CAMPOS APÓS SALVAR O REGISTRO COM SUCESSO
@@ -55,7 +54,8 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 				$scope.deAutor = null;
 				$scope.deEditora = null;
 				$scope.deEdicao = null;
-				
+				$scope.icAtivo = null;
+
 				$scope.submited = false;
 			} else {
 
