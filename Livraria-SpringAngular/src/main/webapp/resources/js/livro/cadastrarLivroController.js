@@ -11,13 +11,7 @@ cadastrarControllerApp.controller("cadastrarController", function($scope,
 	$scope.deEdicao = null;
 	$scope.ativo = null;
 
-	$scope.updateForm = function() {
-		$scope.submited = false;
-	};
-
 	$scope.salvarLivro = function() {
-
-		$scope.submited = true;
 
 		if (!$scope.form.$valid) {
 			return false;

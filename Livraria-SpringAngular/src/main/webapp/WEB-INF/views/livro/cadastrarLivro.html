@@ -37,7 +37,7 @@
 		</div>
 	</nav>
 	<main>
-	<form id="form" name="form" ng-controller="cadastrarController" required>
+	<form id="form" name="form" novalidate ng-controller="cadastrarController" required>
 		<div class="container">
 
 			<h4>Novo Livro</h4>
@@ -45,10 +45,10 @@
 			<div class="row">
 				<div class="col s12 input-field">
 					<label for="deTitulo">Título</label>
-					<input type="text" id="deTitulo" name="deTitulo" ng-model="deTitulo" class="validate" ng-focus="updateForm()" ng-minlength="5"
-						ng-maxlength="150" required />
+					<input type="text" id="deTitulo" name="deTitulo" ng-model="deTitulo" class="validate" ng-minlength="5" ng-maxlength="150" required />
 					<div ng-messages="form.deTitulo.$error" style="color: maroon" role="alert">
-						<div ng-message="required" class="error-msg" ng-show="form.deTitulo.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="required" class="error-msg" ng-show="form.deTitulo.$error.required && form.deTitulo.$pristine && form.$submitted">Campo
+							obrigatório</div>
 						<div ng-message="minlength" class="error-msg" ng-show="form.deTitulo.$error.minlength">Tamanho minímo é de 5 caracteres</div>
 						<div ng-message="maxlength" class="error-msg" ng-show="form.deTitulo.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
 					</div>
@@ -58,19 +58,20 @@
 			<div class="row">
 				<div class="col s7 input-field">
 					<label for="deAutor">Autor</label>
-					<input type="text" id="deAutor" name="deAutor" ng-model="deAutor" ng-minlength="5" ng-maxlength="150" required ng-focus="updateForm()" />
+					<input type="text" id="deAutor" name="deAutor" ng-model="deAutor" ng-minlength="5" ng-maxlength="150" required />
 					<div ng-messages="form.deAutor.$error" style="color: maroon" role="alert">
-						<div ng-message="required" class="error-msg" ng-show="form.deAutor.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="required" class="error-msg" ng-show="form.deAutor.$error.required && form.deAutor.$pristine && form.$submitted">Campo
+							obrigatório</div>
 						<div ng-message="minlength" class="error-msg" ng-show="form.deAutor.$error.minlength">Tamanho minímo é de 5 caracteres</div>
 						<div ng-message="maxlength" class="error-msg" ng-show="form.deAutor.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
 					</div>
 				</div>
 				<div class="col s2 input-field">
 					<label for="aaPublicacao">Ano Publicação</label>
-					<input type="text" id="aaPublicacao" name="aaPublicacao" ng-model="aaPublicacao" class="validate ano" ng-minlength="4" required
-						ng-focus="updateForm()" />
+					<input type="text" id="aaPublicacao" name="aaPublicacao" ng-model="aaPublicacao" class="validate ano" ng-minlength="4" required />
 					<div ng-messages="form.aaPublicacao.$error" style="color: maroon" role="alert">
-						<div ng-message="required" class="error-msg" ng-show="form.aaPublicacao.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="required" class="error-msg" ng-show="form.aaPublicacao.$error.required && form.aaPublicacao.$pristine && form.$submitted">Campo
+							obrigatório</div>
 						<div ng-message="minlength" class="error-msg" ng-show="form.aaPublicacao.$error.minlength">Tamanho minímo é de 4 caracteres</div>
 					</div>
 				</div>
@@ -88,10 +89,10 @@
 			<div class="row">
 				<div class="col s7 input-field">
 					<label for="deEditora">Editora</label>
-					<input type="text" id="deEditora" name="deEditora" ng-model="deEditora" class="validate" ng-minlength="5" ng-maxlength="50" required
-						ng-focus="updateForm()" />
+					<input type="text" id="deEditora" name="deEditora" ng-model="deEditora" class="validate" ng-minlength="5" ng-maxlength="50" required />
 					<div ng-messages="form.deEditora.$error" style="color: maroon" role="alert">
-						<div ng-message="required" class="error-msg" ng-show="form.deEditora.$error.required && submited">Campo obrigatório</div>
+						<div ng-message="required" class="error-msg" ng-show="form.deEditora.$error.required && form.deEditora.$pristine && form.$submitted">Campo
+							obrigatório</div>
 						<div ng-message="minlength" class="error-msg" ng-show="form.deEditora.$error.minlength">Tamanho minímo é de 5 caracteres</div>
 						<div ng-message="maxlength" class="error-msg" ng-show="form.deEditora.$error.maxlength">Tamanho máximo é de 50 caracteres</div>
 					</div>
@@ -104,7 +105,7 @@
 			</div>
 			<div class="row right-align">
 				<a href="../" class="btn waves-effect waves-light ">Voltar</a>
-				<a class="waves-effect waves-light btn blue" ng-click="salvarLivro()"> Salvar</a>
+				<button class="waves-effect waves-light btn blue" ng-click="salvarLivro()" type="submit">Salvar</button>
 			</div>
 		</div>
 		<script type="text/javascript" src="../resources/js/custom.js"></script>

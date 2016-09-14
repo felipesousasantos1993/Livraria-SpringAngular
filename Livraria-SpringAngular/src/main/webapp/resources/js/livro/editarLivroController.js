@@ -11,10 +11,6 @@ editarLivroControllerApp.controller("editarLivroController", function($scope,
 	$scope.deEdicao = null;
 	$scope.icAtivo = null;
 
-	$scope.updateForm = function() {
-		$scope.submited = false;
-	};
-
 	$scope.init = function() {
 		var url = window.location.href;
 		var id = url.substring(url.lastIndexOf("/") + 1);
@@ -26,12 +22,16 @@ editarLivroControllerApp.controller("editarLivroController", function($scope,
 			$scope.deEditora = response.data.deEditora;
 			$scope.deEdicao = response.data.deEdicao;
 			$scope.icAtivo = response.data.ativo;
+
 		});
 	};
 
 	$scope.alterarLivro = function() {
 
-		$scope.submited = true;
+		$scope.form.deTitulo.$pristine = true;
+		$scope.form.deAutor.$pristine = true;
+		$scope.form.aaPublicacao.$pristine = true;
+		$scope.form.deEditora.$pristine = true;
 
 		if (!$scope.form.$valid) {
 			return false;
@@ -56,20 +56,20 @@ editarLivroControllerApp.controller("editarLivroController", function($scope,
 
 				/* REDIRECIONA APÓS ALTERARMOS O REGISTRO */
 				window.location.href = "../consultar.html";
-				
+
 				Materialize.toast(data.mensagem, 4000)
 
 			} else {
 
 				/* MOSTRA O ERRO TRATO PELO SPRING (OBJETO ResultadoModel) */
-				$window.alert(data.mensagem);
+				Materialize.toast(data.mensagem, 4000)
 
 			}
 		});
 
 		response.error(function(data, status, headers, config) {
 			/* SE OCORRER ERRO NÃO TRATADO IREMOS MOSTRA EM MENSAGEM */
-			$window.alert(data);
+			Materialize.toast(data, 4000)
 
 		});
 

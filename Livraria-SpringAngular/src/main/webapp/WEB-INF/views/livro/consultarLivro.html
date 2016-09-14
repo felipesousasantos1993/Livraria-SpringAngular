@@ -58,10 +58,9 @@
 							<th><a href="#" ng-click="sortBy('deTitulo')"> Título</a></th>
 							<th><a href="#" ng-click="sortBy('deAutor')">Autor</a></th>
 							<th><a href="#" ng-click="sortBy('aaPublicacao')">Ano Publicação</a></th>
-							<th><a href="#" ng-click="sortBy('deEdicao')">Edição</a></th>
 							<th><a href="#" ng-click="sortBy('deEditora')">Editora</a></th>
 							<th><a href="#" ng-click="sortBy('ativo')">Ativo</a></th>
-							<th>Ação</th>
+							<th>Ação</th> 
 						</tr>
 					</thead>
 					<tbody>
@@ -69,7 +68,6 @@
 							<td>{{ livro.deTitulo }}</td>
 							<td>{{ livro.deAutor }}</td>
 							<td>{{ livro.aaPublicacao }}</td>
-							<td>{{ livro.deEdicao }}</td>
 							<td>{{ livro.deEditora }}</td>
 							<td>{{ livro.ativo ? "Sim" : "Não" }}</td>
 							<td>
@@ -102,7 +100,7 @@
 			</div>
 			<div class="modal-footer">
 				<a class=" modal-action modal-close waves-effect waves-green btn-flat ">Não</a>
-				<a ng-click="excluirLivro() " class=" modal-action modal-close waves-effect waves-green btn-flat ">Sim</a>
+				<button ng-click="excluirLivro() " class=" modal-action modal-close waves-effect waves-green btn-flat ">Sim</a>
 			</div>
 		</div>
 	</form>
