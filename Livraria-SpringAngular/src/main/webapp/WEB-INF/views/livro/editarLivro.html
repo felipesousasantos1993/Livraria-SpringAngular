@@ -17,8 +17,24 @@
 <link rel="stylesheet" type="text/css" href="../../resources/css/custom.css" />
 <link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
 <link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 <body>
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="cadastrar.html">Cadastrar</a></li>
+		<li><a href="consultar.html"> Pesquisar </a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="hide-on-med-and-down">
+				<li><a href="../index.html">Início</a></li>
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+						Livro<i class="material-icons right">arrow_drop_down</i>
+					</a></li>
+			</ul>
+
+		</div>
+	</nav>
 	<main>
 	<form id="form" name="form" ng-controller="editarLivroController" ng-init="init()">
 		<div class="container">
@@ -84,7 +100,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row right-align">
 				<a href="../consultar.html" class="btn waves-effect ">Voltar</a>
 				<a class="btn waves-effect waves-light blue" ng-click="alterarLivro()">Salvar</a>
 
@@ -99,7 +115,12 @@
 		<div class="footer-copyright">
 			<div class="container">
 				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
-				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">GitHub</a>
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">
+					GitHub <img alt="Github" src="../../resources/img/github.png" class="img-social" width="21" height="21" />
+				</a>
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://br.linkedin.com/in/felipesousa">
+					LinkedIn <img alt="Linkeind" src="../../resources/img/linkedin.png" class="img-social" width="21" height="21" />
+				</a>
 			</div>
 		</div>
 	</footer>

@@ -12,6 +12,13 @@
 	transition: .2s opacity ease-out, .2s color ease-out;
 }
 
+.img-social {
+	margin-right: 10px;
+	position: relative;
+	top: 4px;
+	margin-left: 2px;
+}
+
 body {
 	display: flex;
 	min-height: 100vh;

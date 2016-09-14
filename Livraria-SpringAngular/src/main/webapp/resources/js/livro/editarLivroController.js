@@ -43,7 +43,8 @@ editarLivroControllerApp.controller("editarLivroController", function($scope,
 				livro.aaPublicacao = $scope.aaPublicacao,
 				livro.deAutor = $scope.deAutor,
 				livro.deEditora = $scope.deEditora,
-				livro.deEdicao = $scope.deEdicao, livro.ativo = null == $scope.icAtivo ? false : $scope.icAtivo;
+				livro.deEdicao = $scope.deEdicao,
+				livro.ativo = null == $scope.icAtivo ? false : $scope.icAtivo;
 
 		/* EXECUTA O POST PARA ALTERAR O REGISTRO */
 		var response = $http.post("../alterar", livro);
@@ -53,11 +54,10 @@ editarLivroControllerApp.controller("editarLivroController", function($scope,
 			/* MOSTRA O RESULTADO QUE RETORNOU DO SPRING */
 			if (data.codigo == 1) {
 
-				/* MENSAGEM DE SUCESSO */
-				$window.alert(data.mensagem);
-
 				/* REDIRECIONA APÓS ALTERARMOS O REGISTRO */
 				window.location.href = "../consultar.html";
+				
+				Materialize.toast(data.mensagem, 4000)
 
 			} else {
 
