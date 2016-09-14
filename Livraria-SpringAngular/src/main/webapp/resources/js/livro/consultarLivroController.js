@@ -1,5 +1,7 @@
 var consultarRegistrosControllerApp = angular.module("consultarRegistrosControllerApp",[]);
 
+angular.module('consultarRegistrosControllerApp', ['angularUtils.directives.dirPagination']);
+
 consultarRegistrosControllerApp.controller("consultarLivrosController",function($scope, $window, $http){
 	
 	/* CRIANDO UM ARRAY PARA OS REGISTROS QUE VÃO SER RETORNADOS PELO SPRING */
