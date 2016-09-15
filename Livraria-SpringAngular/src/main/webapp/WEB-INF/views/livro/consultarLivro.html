@@ -12,8 +12,8 @@
 
 <script type="text/javascript" src="../resources/js/angular.min.js"></script>
 <script type="text/javascript" src="../resources/js/angular-messages.min.js"></script>
-<script type="text/javascript" src="../resources/js/dirPagination.js"></script>
 <script type="text/javascript" src="../resources/js/livro/consultarLivroController.js"></script>
+<script type="text/javascript" src="../resources/js/angular-paginator.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
 <link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
@@ -60,11 +60,11 @@
 							<th><a href="#" ng-click="sortBy('aaPublicacao')">Ano Publicação</a></th>
 							<th><a href="#" ng-click="sortBy('deEditora')">Editora</a></th>
 							<th><a href="#" ng-click="sortBy('ativo')">Ativo</a></th>
-							<th>Ação</th>
+							<th>Ação</th> 
 						</tr>
 					</thead>
 					<tbody>
-						<tr dir-paginate="livro in livros|orderBy:sort:reverse|filter:search|itemsPerPage:10">
+						<tr ng-repeat="livro in livros | orderBy :sort:reverse">
 							<td>{{ livro.deTitulo }}</td>
 							<td>{{ livro.deAutor }}</td>
 							<td>{{ livro.aaPublicacao }}</td>
@@ -81,7 +81,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"> </dir-pagination-controls>
 			</div>
 
 			<div class="row">
@@ -101,9 +100,7 @@
 			</div>
 			<div class="modal-footer">
 				<a class=" modal-action modal-close waves-effect waves-green btn-flat ">Não</a>
-				<button ng-click="excluirLivro() " class=" modal-action modal-close waves-effect waves-green btn-flat ">
-					Sim
-					</a>
+				<button ng-click="excluirLivro() " class=" modal-action modal-close waves-effect waves-green btn-flat ">Sim</a>
 			</div>
 		</div>
 	</form>
