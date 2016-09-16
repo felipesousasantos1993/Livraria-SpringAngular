@@ -1,0 +1,165 @@
+<!DOCTYPE>
+<html lang="pt-BR" ng-app="cadastrarClienteApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Language" content="pt-BR">
+<title>Cadastrar Livro</title>
+
+<script type="text/javascript" src="../resources/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/materialize.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.mask.js"></script>
+
+<script type="text/javascript" src="../resources/js/angular.min.js"></script>
+<script type="text/javascript" src="../resources/js/angular-locale_pt-br.js"></script>
+<script type="text/javascript" src="../resources/js/angular-messages.min.js"></script>
+<script type="text/javascript" src="../resources/js/cliente/cadastrarClienteController.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../resources/css/materialize.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/custom.css" />
+<link rel="shortcut icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="../resources/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body>
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="cadastrar.html">Cadastrar</a></li>
+		<li><a href="consultar.html"> Pesquisar </a></li>
+	</ul>
+	<ul id="dropdown2" class="dropdown-content">
+		<li><a href="cliente/cadastrar.html">Cadastrar</a></li>
+		<li><a href="cliente/consultar.html"> Pesquisar </a></li>
+	</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<ul class="hide-on-med-and-down">
+				<li><a href="../index.html">Início</a></li>
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+						Livro<i class="material-icons right">arrow_drop_down</i>
+					</a></li>
+				<li><a class="dropdown-button" href="#!" data-activates="dropdown2">
+						Cliente<i class="material-icons right">arrow_drop_down</i>
+					</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<main>
+	<form id="form" name="form" novalidate ng-controller="cadastrarClienteController" required>
+		<div class="container">
+
+			<h4>Novo Cliente</h4>
+
+			<div class="row">
+				<div class="col s2 input-field">
+					<label for="nuCpf">CPF</label>
+					<input type="text" id="nuCpf" name="nuCpf" ng-model="nuCpf" class="validate cpf" ng-minlength="5" ng-maxlength="150" required />
+					<div ng-messages="form.nuCpf.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.nuCpf.$error.required && form.nuCpf.$pristine && form.$submitted">Campo
+							obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.nuCpf.$error.minlength">Tamanho minímo é de 5 caracteres</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.nuCpf.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
+					</div>
+				</div>
+				<div class="col s10 input-field">
+					<label for="noCliente">Nome</label>
+					<input id="noCliente" name="noCliente" ng-model="noCliente" class="validate" ng-minlength="5" ng-maxlength="150" required />
+					<div ng-messages="form.noCliente.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.noCliente.$error.required && form.noCliente.$pristine && form.$submitted">Campo
+							obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.noCliente.$error.minlength">Tamanho minímo é de 5 caracteres</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.noCliente.$error.maxlength">Tamanho máximo é de 150 caracteres</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s2">
+					<label for="dtNascimento">Data de Nascimento</label>
+					<input type="date" id="dtNascimento" name="dtNascimento" class="datepicker" ng-model="dtNascimento" required />
+					<div ng-messages="form.dtNascimento.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.dtNascimento.$error.required && form.dtNascimento.$pristine && form.$submitted">Campo
+							obrigatório</div>
+					</div>
+				</div>
+				<div class="col s2 input-field">
+					<label for="nuCep">CEP</label>
+					<input type="text" id="nuCep" name="nuCep" ng-model="nuCep" ng-blur="buscarCep()" class="validate cep" required />
+					<div ng-messages="form.nuCep.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.nuCep.$error.required && form.nuCep.$pristine && form.$submitted">Campo
+							obrigatório</div>
+					</div>
+				</div>
+				<div class="col s7 input-field">
+					<label for="deLogradouro">Logradouro</label>
+					<input type="text" id="deLogradouro" name="deLogradouro" readonly="readonly" ng-model="deLogradouro" required="required" />
+					<div ng-messages="form.deLogradouro.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.deLogradouro.$error.required  && form.deLogradouro.$pristine && form.$submitted">Campo
+							Obrigatório</div>
+					</div>
+				</div>
+				<div class="col s1 input-field">
+					<label for="nuLogradouro">Número</label>
+					<input type="text" id="nuLogradouro" name="nuLogradouro" ng-model="nuLogradouro" class="validate" maxlength="5" ng-maxlength="5" required />
+					<div ng-messages="form.nuLogradouro.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.nuLogradouro.$error.required && form.nuLogradouro.$pristine && form.$submitted">Campo
+							obrigatório</div>
+						<div ng-message="maxlength" class="error-msg" ng-show="form.nuLogradouro.$error.maxlength">Tamanho máximo é de 5 caracteres</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s4 input-field">
+					<label for="deBairro">Bairro</label>
+					<input type="text" id="deBairro" name="deBairro" ng-model="deBairro" readonly="readonly" class="validate" ng-minlength="4" required />
+					<div ng-messages="form.deBairro.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.deBairro.$error.required && form.deBairro.$pristine && form.$submitted">Campo
+							obrigatório</div>
+						<div ng-message="minlength" class="error-msg" ng-show="form.deBairro.$error.minlength">Tamanho minímo é de 4 caracteres</div>
+					</div>
+				</div>
+				<div class="col s7 input-field">
+					<label for="deCidade">Cidade</label>
+					<input type="text" id="deCidade" name="deCidade" ng-model="deCidade" readonly="readonly" required="required" />
+					<div ng-messages="form.deCidade.$error" style="color: maroon" role="alert">
+						<div ng-message="maxlength" class="error-msg" ng-show="form.deCidade.$error.required  && form.deCidade.$pristine && form.$submitted">Campo
+							Obrigatório</div>
+					</div>
+				</div>
+				<div class="col s1 input-field">
+					<label for="sgUf">UF</label>
+					<input type="text" id="sgUf" name="sgUf" ng-model="sgUf" readonly="readonly" class="validate" required="required" />
+					<div ng-messages="form.sgUf.$error" style="color: maroon" role="alert">
+						<div ng-message="required" class="error-msg" ng-show="form.sgUf.$error.required && form.sgUf.$pristine && form.$submitted">Campo
+							obrigatório</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row right-align">
+				<a href="../" class="btn waves-effect waves-light ">Voltar</a>
+				<button class="waves-effect waves-light btn blue" ng-click="salvarLivro()" type="submit">Salvar</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../resources/js/custom.js"></script>
+	</form>
+	</main>
+
+	<footer class="page-footer">
+		<div class="footer-copyright">
+			<div class="container">
+				Desenvolvido por Felipe de Sousa Santos © 2016 - Todos os Direitos Reservados
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://github.com/felipesousasantos1993">
+					GitHub <img alt="Github" src="../resources/img/github.png" class="img-social" width="21" height="21" />
+				</a>
+				<a class="grey-text text-lighten-4 right" target="_blank" href="https://br.linkedin.com/in/felipesousa">
+					LinkedIn <img alt="Linkeind" src="../resources/img/linkedin.png" class="img-social" width="21" height="21" />
+				</a>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
